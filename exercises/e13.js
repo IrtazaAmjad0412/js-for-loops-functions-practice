@@ -9,7 +9,26 @@
 // Phil's Account Object
 // ]
 
-export function getAllAccountsWithSumsOfDepositsLess2000(array) {}
+import { bankAccounts } from "../data/data";
+
+export function getAllAccountsWithSumsOfDepositsLess2000(array) {
+  // Your code goes here...
+  const results = [];
+  for (const value of array) {
+    let sumOfDeposits = 0;
+    for (const index in value.deposits) {
+      if (value.deposits[index] > 0) {
+        sumOfDeposits = sumOfDeposits + value.deposits[index];
+      }
+    }
+    if (sumOfDeposits < 2000 || sumOfDeposits === 0) {
+      results.push(value);
+    }
+  }
+  return results;
+}
+
+getAllAccountsWithSumsOfDepositsLess2000(bankAccounts);
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-13"
